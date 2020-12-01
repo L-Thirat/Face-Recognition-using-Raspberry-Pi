@@ -2,11 +2,21 @@ import cv2
 import numpy as np
 import os
 
-os.chdir("/home/pi/opencv-3.4.1/data/haarcascades")
+# Path for face image database
+home = "C:/Users/thirat/Documents/git/Face-Recognition-using-Raspberry-Pi/"
+# home = "/home/pi/"
+path = home + 'dataset'
+
+home_haar = "C:/Users/thirat/Documents/git/Face-Recognition-using-Raspberry-Pi/venv/Lib/site-packages/cv2/data/"
+# home_haar = "/home/pi/opencv-3.4.1/data/haarcascades/"
+os.chdir(home_haar)
+
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('/home/pi/FaceRecognition/trainer/trainer.yml')
-cascadePath = "/home/pi/opencv-3.4.1/data/haarcascades/haarcascade_frontalface_default.xml"
-faceCascade = cv2.CascadeClassifier(cascadePath);
+# recognizer.read('/home/pi/FaceRecognition/trainer/trainer.yml')
+recognizer.read(home + 'FaceRecognition/trainer/trainer.yml')
+# cascadePath = "/home/pi/opencv-3.4.1/data/haarcascades/haarcascade_frontalface_default.xml"
+cascadePath = home_haar + "haarcascade_frontalface_default.xml"
+faceCascade = cv2.CascadeClassifier(cascadePath)
 
 font = cv2.FONT_HERSHEY_SIMPLEX
 
@@ -14,7 +24,7 @@ font = cv2.FONT_HERSHEY_SIMPLEX
 id = 0
 
 # names related to ids: example ==> KUNAL: id=1,  etc
-names = ['None', 'Kunal', 'Kaushik', 'Atharv', 'Z', 'W']
+names = ['None', 'Thirat']
 
 # Initialize and start realtime video capture
 cam = cv2.VideoCapture(0)
