@@ -1,6 +1,9 @@
 import cv2
 import os
-cam = cv2.VideoCapture(0)
+for i in range(10):
+    cam = cv2.VideoCapture(i)
+    if cam.isOpened():
+        break
 cam.set(3, 640) # set video width
 cam.set(4, 480) # set video height
 face_detector = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
